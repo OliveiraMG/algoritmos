@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lutador</title>
+</head>
+<body>
+    <div id="div_1"><h4>Vida do Lutador: 1000</h4></div>
+    <div id="div_2"></div>
+    <img src="https://static.wikia.nocookie.net/streetfighter/images/d/d1/Ryu.png/revision/latest/scale-to-width-down/338?cb=20140116204644&path-prefix=pt-br" id="img_lutador">
+    <button onclick="apanha()">Apanhar</button>
+    <button onclick="concentra()">Concentrar força</button>
+</body>
+</html>
+<script>
+    var valor = 1000
+    function apanha() {
+        if (valor > 0) {
+            valor -= 100
+            div_1.innerHTML = `Vida do lutador: ${valor.toFixed(2)}`
+            div_2.innerHTML = `Lutador ainda vivo!`
+        } else {
+            div_1.innerHTML = `Vida do lutador: ${valor.toFixed(2)}`
+            div_2.innerHTML = `O lutador já era`
+            img_lutador.src = "https://sfgalleries.net/art/sf2/sf2ww/series2/ryu.gif"
+        }
+        function concentra() {
+            if (valor > 0) {
+                valor += 50
+                
+            }
+        }
+    }
+    function concentra() {
+        valor += 50 
+    }
+</script>
