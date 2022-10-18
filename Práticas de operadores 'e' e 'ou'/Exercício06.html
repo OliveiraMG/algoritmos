@@ -8,7 +8,7 @@
 </head>
 <body>
     Qual o nome do produto?<br>
-    <input placeholder="Produto" id="in_nome"><br><br>
+    <input placeholder="Produto" id="in_produto"><br><br>
     Qual o preço do produto?<br>
     <input placeholder="Preço" id="in_preco"><br><br>
     Qual o cupom?<br>
@@ -19,43 +19,27 @@
 </html>
 <script>
     function aplicar() {
-        var nome = in_nome.value.toLowerCase()
+        var produto = in_produto.value.toLowerCase()
         var preco = Number(in_preco.value)
-        var cupom = in_cupom.value
+        var cupom = in_cupom.value.toUpperCase()
 
-        var geralD = preco * 10
-        var geralV = preco - geralD
-        var techD = preco * 19
-        var techV = preco - techD
-
-        var produtoGeral = nome == 'Tênis' || nome == 'Livros' || nome == 'Material escolar'
-        var produtoTech = nome == 'Celular' || nome == 'Notebook' || nome == 'Tablet'
-
-        var geralC = 'GERAL_10'
-        var techC = 'TECH_19'
-
-        if (nome == '') {
-            alert('Insira um nome para prosseguir')
-        }
-
-        if (preco == '') {
+        if (produto == '') {
+            alert('Insira um produto para prosseguir')
+        } else if (preco == 0) {
             alert('Insira um preço para prosseguir')
-        }
-
-        if (cupom == '') {
+        } else if (cupom == '') {
             alert('Insira um cupom para prosseguir')
-        }
-
-        if (!produtoG && !produtoT && !geralC && !techC) {
-            div_out.innerHTML = 'Cupom não aplicado! Preencha os campos e tente novamente!'
-        }
-
-        if (produtoGeral && cupom == 'GERAL_10') {
-            div_out.innerHTML = `Cupom para produtos em geral aplicado! Preço final será R$${geralV}`
-        }
-
-        if (produtoTech && cupom == 'TECH_19') {
-            div_out.innerHTML = `Cupom para produtos tecnológicos foi aplicado! Preço final será R$${techV}`
+        } else {
+            if ((produto == 'tênis' || produto == 'livros' || produto == 'material escolar') && cupom == 'GERAL_10'){
+                preco = preco * 0.9;
+                div_out.innerHTML = `Cupom para produtos em geral aplicado! Preço final será de R$${preco}`;
+            } else if ((produto == 'celular' || produto == 'notebook' || produto == 'tablet') && cupom == 'TECH_19') {
+                preco = preco * 0.81;
+                div_out.innerHTML = `Cupom para produtos tecnológicos aplicado! Preço final será de R$${preco}`
+            }
+            else {
+                div_out.innerHTML = `Cupom não aplicado, tente novamente!`
+            }
         }
     }
 </script>
